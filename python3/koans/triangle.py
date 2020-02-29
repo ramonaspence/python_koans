@@ -17,17 +17,23 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
+    arr = [a, b, c]
+    # try:
+    #     arr <= 0
+    # except:
+    #
+    #     else:
+
+    if min(arr) <= 0:
+        raise TriangleError
+    elif (a+b <= c) or (b+c <= a) or (a+c <= b):
+        raise TriangleError
     if a == b and b == c:
         return 'equilateral'
-    elif (a == b):
+    elif (a == b) or (b == c) or (a == c):
         return 'isosceles'
-    elif (b == c):
-        return 'isosceles'
-    elif (a == c):
-        return 'isosceles'
-    elif:
+    elif a != c or c != b:
         return 'scalene'
-
 
 
 
