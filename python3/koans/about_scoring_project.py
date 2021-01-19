@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from runner.koan import *
 
 # Greed is a dice game where you roll up to five dice to accumulate
@@ -33,14 +32,26 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    if 1 in dice:
-        score += 100
-    elif [1, 1, 1] in dice:
-        score += 1000
-    elif [5, 5, 5] in dice:
-        score += 500
-    elif for n*3 in dice:
-        score += (n*100)
+    score = 0
+    if dice.count(5) >= 3: 
+        score += 500 + (dice.count(5) % 3) * 50
+
+    if dice.count(5) < 3:
+        score += (dice.count(5) * 5) * 10
+
+    if dice.count(1) >= 3:
+        score += 1000 + (dice.count(1) % 3) * 100
+        
+    if dice.count(1) < 3:
+        score += ((dice.count(1) * 1) * 100)
+    
+    for d in [2,3,4,6]:
+        if dice.count(d) == 3:
+            score += d * 100
+    return score
+        
+        
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
